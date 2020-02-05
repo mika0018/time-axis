@@ -1,0 +1,194 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+section {
+  width: 100%;
+}
+.container {
+  padding: 20px 20px;
+  width: 100%;
+}
+.whole-axis {
+  width: 100%;
+  height: 19px;
+  background: #274680;
+  border: #274680 solid 4px;
+  border-radius: 5px;
+  position: relative;
+}
+.past-time {
+  height: 100%;
+  background: linear-gradient(0deg, rgba(38, 67, 126, 1) 0%, rgba(0, 157, 224, 1) 100%);
+  border-radius: 5px;
+}
+
+.light-shadow {
+  background: rgb(21, 227, 242);
+  background: radial-gradient(
+    ellipse,
+    rgba(21, 227, 242, 1) 0%,
+    rgba(21, 227, 242, 0) 70%,
+    rgba(21, 227, 242, 0) 100%
+  );
+  background-position-y: -50%;
+  max-width: 20%;
+  height: 150%;
+  position: absolute;
+  left: 10%;
+  top: -5px;
+}
+
+.icon-event {
+  width: 37px;
+  height: 37px;
+  border: #274680 solid 4px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -13px;
+}
+.icon-event i {
+  color: white;
+}
+
+/* adding classes depending on the time */
+.icon-event.bcg-blue {
+  background: #274680;
+}
+.icon-event.bcg-gradient {
+  background: linear-gradient(0deg, rgba(38, 67, 126, 1) 0%, rgba(0, 157, 224, 1) 100%);
+}
+
+.icon-event:hover {
+  background: rgb(33, 188, 166);
+  background: linear-gradient(0deg, rgba(33, 188, 166, 1) 0%, rgba(130, 243, 227, 1) 100%);
+  cursor: pointer;
+}
+
+.tooltip {
+  display: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+}
+
+.tooltip-desktop {
+  position: absolute;
+  text-align: center;
+  border-bottom: #a8b4cb solid 1px;
+  outline: #274680 solid 1px;
+  bottom: 45px;
+  width: 101px;
+  background: white;
+}
+
+.icon-event::after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: -20px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin-left: -5px;
+  background: white;
+  border-bottom: #274680 solid 1px;
+  border-left: #274680 solid 1px;
+  border-top: white solid 2px;
+  border-right: white solid 2px;
+  transform: rotate(-45deg);
+}
+.icon-event:hover::after {
+  display: block;
+}
+
+.tooltip .detailed {
+  margin: 0 8px;
+  padding: 5px 0;
+}
+.tooltip .date {
+  font-weight: bold;
+  border-bottom: #274680 solid 1px;
+}
+.icon-event:hover .tooltip-desktop {
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    display: block;
+  }
+  .whole-event {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .past-time,
+  .light-shadow {
+    display: none;
+  }
+
+  .whole-axis .icon-event {
+    position: static;
+    border-color: #122244;
+    border-width: 6px;
+    margin-right: 15px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  .whole-axis .icon-event.bcg-blue {
+    background: #122244;
+  }
+
+  .time-axis .whole-axis {
+    height: 100%;
+    background: white;
+    border: none;
+  }
+  .tooltip {
+    position: static;
+    display: none;
+    outline: none;
+    text-align: left;
+    border: none;
+    background: none;
+  }
+
+  .tooltip-desktop {
+    display: none;
+  }
+  .tooltip-mobile {
+    display: block;
+    font-size: 15px;
+  }
+  .tooltip .detailed {
+    padding: 2px 0;
+  }
+  .tooltip-mobile .date {
+    border: none;
+    color: #122244;
+  }
+  .tooltip-mobile .name {
+    color: #122244;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .icon-event:hover .tooltip,
+  .icon-event:hover::after {
+    display: none;
+  }
+}
